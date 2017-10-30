@@ -11,13 +11,13 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 include_once('../getID3-1.9.15/getid3/getid3.php');
 use Psr\Http\Message\ServerRequestInterface;
 use Illuminate\Http\Response;
+
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
 
 $router->post('api/v{version}/uploadvideo', function($version, ServerRequestInterface $request) { // Can create if/else tree later to utilise $version if required
     if ($request->hasFile('video') && $request->file('video')->isValid()) { // Check for video file in request and that it uploaded correctly
