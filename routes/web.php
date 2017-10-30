@@ -25,7 +25,7 @@ $router->post('api/v{version}/uploadvideo', function($version, ServerRequestInte
 
         $videoFile->store('videos'); // Save video
 
-        return response()->json(getID3($videoFile));
+        return response()->json(getID3($videoFile)); // Return getID3 data as JSON
     } else { // Handle bad request/failed upload
         return response()->json(['error' => 'invalidFile']); // Handle on client-side via JavaScript to determine failed response
     }
